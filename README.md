@@ -30,6 +30,4 @@ Ctrl 을 누른 상태에서 K 와 F 를 차례로 눌러줍니다
 ```
 
 ### 참고
-> 가상환경 생성 :
-> 인스타그램 크롤링 : https://cntechsystems.tistory.com/91 <br/>
-# StockDataAnalysis
+> 가상환경 생성 및 파이참 연결 : https://wikidocs.net/70588
