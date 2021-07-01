@@ -31,3 +31,5 @@ Ctrl 을 누른 상태에서 K 와 F 를 차례로 눌러줍니다
 
 ### 참고
 > 가상환경 생성 및 파이참 연결 : https://wikidocs.net/70588
+> Yahoo Finance 데이터 수집 1 : https://wendys.tistory.com/174
+> Yahoo Finance 데이터 수집 2 : https://minjejeon.github.io/learningstock/2016/07/12/getting-data-from-yahoo-finance.html
