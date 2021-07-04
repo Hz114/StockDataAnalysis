@@ -13,6 +13,9 @@ class MostActiveStock(models.Model):
     AverageVolume = models.CharField(max_length=30)
     Volume = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.Symbols
+
 class GainerStock(models.Model):
     Symbols = models.CharField(max_length=10)
     Names = models.CharField(max_length=100)
@@ -23,6 +26,9 @@ class GainerStock(models.Model):
     AverageVolume = models.CharField(max_length=30)
     Volume = models.CharField(max_length=30)
 
+    def __str__(self):
+        return self.Symbols
+
 class LoserStock(models.Model):
     Symbols = models.CharField(max_length=10)
     Names = models.CharField(max_length=100)
@@ -32,3 +38,6 @@ class LoserStock(models.Model):
     MarketCap = models.CharField(max_length=30)
     AverageVolume = models.CharField(max_length=30)
     Volume = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.Symbols
