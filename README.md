@@ -1,10 +1,9 @@
 # Stock Data Analysis
 ### 실행화면
 ![img.png](img.png)
-![img_1.png](img_1.png)
 
 ### 가상환경
->가상환경 실행하기  
+>가상환경 실행하기 </br>
 >*Django개발은 반드시 가상환경을 키고 시작*  
 `source myvenv/Scripts/activate`
 >
@@ -18,10 +17,18 @@
 ***
 
 ### Django  
+>secrets.json 파일 생성 후 내용입력 </br>
+>*manage.py와 같은 경로에 secrets.json을 생성해야 작동* 
+```
+{
+  "SECRET_KEY" : "Project폴더의 settings.py의 SECRET_KEY"
+}
+```  
 
->Django 서버 작동  
-`python manage.py runserver`  
-</br>
+
+>Django 서버 작동 <br/>
+> `python manage.py runserver`  
+
 
 >Django DB 변경시 실행
 ```
