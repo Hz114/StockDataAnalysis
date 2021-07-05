@@ -91,14 +91,17 @@ if __name__ == '__main__':
     list = ["NWAU", "MU","AMD","SPY","AAPL"]
 
     for idx in range(len(list)):
-        data = DataFrame(yf.download(list[idx], start="2021-06-01", end="2021-07-02"))
+        # data = DataFrame(yf.download(list[idx], start="2021-06-01", end="2021-07-02"))
+        data = DataFrame(yf.download(list[idx]))
+        #hist = data.history(period="max")
         print(data.columns) # 각 값
         print(data.index) # 날짜 데이터
+        # print(hist)
 
         data['Adj Close'].plot()
         plt.xlabel("time")
         plt.ylabel("money")
-        plt.show()
+        #plt.show()
 
         #data['Adj Close'].plot().show()
         '''

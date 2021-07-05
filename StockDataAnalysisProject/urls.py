@@ -19,5 +19,6 @@ from StockDataAnalysisApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.main, name='main')
+    path('', views.main, name='main'),
+    path('api/result/', views.ResultAPIView.as_view(), name="result_api")
 ]
