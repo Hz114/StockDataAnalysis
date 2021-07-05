@@ -10,7 +10,7 @@
 `deactivate`
 
 >가상환경에 설치  
-`pip install -r requirements.txt `
+`pip install -r requirements.txt`
 </br>
 
 ***
@@ -20,6 +20,15 @@
 >Django 서버 작동  
 `python manage.py runserver`  
 </br>
+
+>Django DB 변경시 실행
+```
+python manage.py makemigrations 
+python manage.py migrate
+```
+
+>Django DB admin생성
+`python manage.py createsuperuser`
 
 ### Tip  
 
@@ -31,3 +40,6 @@ Ctrl 을 누른 상태에서 K 와 F 를 차례로 눌러줍니다
 
 ### 참고
 > 가상환경 생성 및 파이참 연결 : https://wikidocs.net/70588
+> Yahoo Finance 데이터 수집 1 : https://wendys.tistory.com/174
+> Yahoo Finance 데이터 수집 2 : https://minjejeon.github.io/learningstock/2016/07/12/getting-data-from-yahoo-finance.html
+
