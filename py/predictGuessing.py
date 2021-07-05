@@ -21,8 +21,8 @@ def make_dataset(data, label, window_size=20):
     return np.array(feature_list), np.array(label_list)
 
 
-data_path = 'C:\\venvs\\StockDataAnalysis-main\\StockDataAnalysisApp\\'
-model_path = 'C:\\venvs\\StockDataAnalysis-main\\StockDataAnalysisApp\\'
+data_path = 'C:\\pythonProject4\\StockDataAnalysisProject\\StockDataAnalysisApp\\data\\'
+model_path = 'C:\\pythonProject4\\StockDataAnalysisProject\\StockDataAnalysisApp\\data\\'
 df_price = pd.read_csv(os.path.join(data_path, 'Samsung.csv'), encoding='utf8')
 df_price.describe()
 TEST_SIZE = 400 # 과거 000일전의 데이터부터 학습시킴

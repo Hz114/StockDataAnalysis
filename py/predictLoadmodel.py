@@ -22,8 +22,8 @@ model_name = 'test400_window50.h5'
 TEST_SIZE = 400
 
 # csv 파일, 모델 위치
-data_path = 'C:\\venvs\\StockDataAnalysis-main\\StockDataAnalysisApp\\'
-model_path = 'C:\\venvs\\StockDataAnalysis-main\\StockDataAnalysisApp\\'
+data_path = 'C:\\pythonProject4\\StockDataAnalysisProject\\StockDataAnalysisApp\\data\\'
+model_path = 'C:\\pythonProject4\\StockDataAnalysisProject\\StockDataAnalysisApp\\data\\'
 
 Original = pd.read_csv(os.path.join(data_path, file_name), encoding='utf8')
 df_price = Original.drop(['Adj Close'], axis=1)

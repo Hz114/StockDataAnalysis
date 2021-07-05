@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-hello
-</body>
-=======
 {% load static %}
 
 <!DOCTYPE html>
@@ -37,7 +26,7 @@ hello
 		<div class="main">
 			<main class="content">
 				<div class="container-fluid p-0">
-					<h1 class="h3 mb-3"><strong>YAHOO Finance Data</strong></h1>
+					<h1 class="h1 mb-3"><strong>YAHOO Finance Data</strong></h1>
 					<div class="row">
 						<div class="col-12 col-lg-12 col-xxl-12 d-flex">
 							<div class="card flex-fill">
@@ -74,8 +63,9 @@ hello
 							</div>
 						</div>
 					</div>
-
+					{% for gainerStock in gainerStocks %}
 					<div class="row">
+						<h3 class="py-3">{{gainerStock.Names}}({{gainerStock.Symbols}})</h3>
 						<div class="col-xl-6 col-xxl-5 d-flex">
 							<div class="w-100">
 								<div class="row">
@@ -83,7 +73,7 @@ hello
 										<div class="card">
 											<div class="card-body">
 												<div class="row">
-													<div class="col mt-0">
+													<div class="col mt-0 py-2">
 														<h5 class="card-title">Price</h5>
 													</div>
 
@@ -93,13 +83,13 @@ hello
 														</div>
 													</div>
 												</div>
-												<h1 class="mt-1 mb-3">$35.21</h1>
+												<h1 class="mt-1 mb-3">${{gainerStock.Prices}}</h1>
 											</div>
 										</div>
 										<div class="card">
 											<div class="card-body">
 												<div class="row">
-													<div class="col mt-0">
+													<div class="col mt-0 py-2">
 														<h5 class="card-title">Open</h5>
 													</div>
 
@@ -117,7 +107,7 @@ hello
 										<div class="card">
 											<div class="card-body">
 												<div class="row">
-													<div class="col mt-0">
+													<div class="col mt-0 py-2">
 														<h5 class="card-title">Change</h5>
 													</div>
 													<div class="col-auto">
@@ -127,14 +117,14 @@ hello
 													</div>
 												</div>
 												<h1 class="mt-1 mb-3">
-													<span class="text-success">+12.3 (+57.12%)</span>
+													<span class="text-success">{{gainerStock.PercentageChanges}}</span>
 												</h1>
 											</div>
 										</div>
 										<div class="card">
 											<div class="card-body">
 												<div class="row">
-													<div class="col mt-0">
+													<div class="col mt-0 py-2">
 														<h5 class="card-title">Previous Close</h5>
 													</div>
 
@@ -154,18 +144,112 @@ hello
 
 						<div class="col-xl-6 col-xxl-7">
 							<div class="card flex-fill w-100">
+								<!--
 								<div class="card-header">
-
 									<h5 class="card-title mb-0">Recent Movement</h5>
 								</div>
-								<div class="card-body py-3">
+								-->
+								<div class="card-body py-5">
 									<div class="chart chart-sm">
-										<canvas id="chartjs-dashboard-line"></canvas>
+										<canvas id="chartjs-dashboard-line{{gainerStock.Symbols}}"></canvas>
 									</div>
 								</div>
 							</div>
 						</div>
+						<script src='{% static "js/app.js" %}'></script>
+						<script>
+							document.addEventListener("DOMContentLoaded", function() {
+								var ctx = document.getElementById("chartjs-dashboard-line{{gainerStock.Symbols}}").getContext("2d");
+								var gradient = ctx.createLinearGradient(0, 0, 0, 225);
+								gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
+								gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
+								// Line chart
+								new Chart(document.getElementById("chartjs-dashboard-line{{gainerStock.Symbols}}"), {
+									type: "line",
+									data: {
+										labels: ["2020.07", "2020.08", "2020.09", "2020.10", "2020.11", "2020.12", "2021.01", "2021.02", "2021.03", "2021.04", "2021.05", "2021.06"],
+										datasets: [{
+											label: "Price ($)",
+											fill: true,
+											backgroundColor: gradient,
+											borderColor: window.theme.primary,
+											data: [
+												211,
+												156,
+												158,
+												189,
+												158,
+												192,
+												256,
+												244,
+												280,
+												343,
+												291,
+												332
+											]
+										},
+										{
+											label: "Prediction ($)",
+											fill: true,
+											backgroundColor: gradient,
+											borderColor: window.theme.success,
+											data: [
+												180,
+												155,
+												125,
+												180,
+												170,
+												200,
+												230,
+												248,
+												300,
+												360,
+												320,
+												350
+											]
+										}]
+									},
+									options: {
+										maintainAspectRatio: false,
+										legend: {
+											display: false
+										},
+										tooltips: {
+											intersect: false
+										},
+										hover: {
+											intersect: true
+										},
+										plugins: {
+											filler: {
+												propagate: false
+											}
+										},
+										scales: {
+											xAxes: [{
+												reverse: true,
+												gridLines: {
+													color: "rgba(0,0,0,0.0)"
+												}
+											}],
+											yAxes: [{
+												ticks: {
+													stepSize: 100
+												},
+												display: true,
+												borderDash: [3, 3],
+												gridLines: {
+													color: "rgba(0,0,0,0.0)"
+												}
+											}]
+										}
+									}
+								});
+
+							});
+						</script>
 					</div>
+					{% endfor %}
 				</div>
 			</main>
 
@@ -183,124 +267,6 @@ hello
 		</div>
 	</div>
 
-	<script src='{% static "js/app.js" %}'></script>
-
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
-			var gradient = ctx.createLinearGradient(0, 0, 0, 225);
-			gradient.addColorStop(0, "rgba(215, 227, 244, 1)");
-			gradient.addColorStop(1, "rgba(215, 227, 244, 0)");
-			// Line chart
-			new Chart(document.getElementById("chartjs-dashboard-line"), {
-				type: "line",
-				data: {
-					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-					datasets: [{
-						label: "Sales ($)",
-						fill: true,
-						backgroundColor: gradient,
-						borderColor: window.theme.primary,
-						data: [
-							2115,
-							1562,
-							1584,
-							1892,
-							1587,
-							1923,
-							2566,
-							2448,
-							2805,
-							3438,
-							2917,
-							3327
-						]
-					}]
-				},
-				options: {
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					tooltips: {
-						intersect: false
-					},
-					hover: {
-						intersect: true
-					},
-					plugins: {
-						filler: {
-							propagate: false
-						}
-					},
-					scales: {
-						xAxes: [{
-							reverse: true,
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}],
-						yAxes: [{
-							ticks: {
-								stepSize: 1000
-							},
-							display: true,
-							borderDash: [3, 3],
-							gridLines: {
-								color: "rgba(0,0,0,0.0)"
-							}
-						}]
-					}
-				}
-			});
-		});
-	</script>
-	<script>
-		document.addEventListener("DOMContentLoaded", function() {
-			// Bar chart
-			new Chart(document.getElementById("chartjs-dashboard-bar"), {
-				type: "bar",
-				data: {
-					labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-					datasets: [{
-						label: "This year",
-						backgroundColor: window.theme.primary,
-						borderColor: window.theme.primary,
-						hoverBackgroundColor: window.theme.primary,
-						hoverBorderColor: window.theme.primary,
-						data: [54, 67, 41, 55, 62, 45, 55, 73, 60, 76, 48, 79],
-						barPercentage: .75,
-						categoryPercentage: .5
-					}]
-				},
-				options: {
-					maintainAspectRatio: false,
-					legend: {
-						display: false
-					},
-					scales: {
-						yAxes: [{
-							gridLines: {
-								display: false
-							},
-							stacked: false,
-							ticks: {
-								stepSize: 20
-							}
-						}],
-						xAxes: [{
-							stacked: false,
-							gridLines: {
-								color: "transparent"
-							}
-						}]
-					}
-				}
-			});
-		});
-	</script>
-
 </body>
 
->>>>>>> Hz1.0
 </html>
