@@ -64,7 +64,7 @@ if __name__=='__main__':
 
     StockDatalist = parseGainerStock()
 
-    for i in range(len(StockDatalist)):
+    for i in range(5):
         GainerStock(Symbols=StockDatalist[i][0],Names=StockDatalist[i][1],Prices=StockDatalist[i][2],Changes=StockDatalist[i][3],PercentageChanges=StockDatalist[i][4],MarketCap=StockDatalist[i][5],AverageVolume=StockDatalist[i][6],Volume=StockDatalist[i][7]).save()
 
 

@@ -21,6 +21,15 @@
 `python manage.py runserver`  
 </br>
 
+>Django DB 변경시 실행
+```
+python manage.py makemigrations 
+python manage.py migrate
+```
+
+>Django DB admin생성
+`python manage.py createsuperuser`
+
 ### Tip  
 
 >Visual Studio Code 코드 자동정렬  
