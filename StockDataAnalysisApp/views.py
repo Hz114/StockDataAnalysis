@@ -18,7 +18,7 @@ def getGainerStock():
 
 def main(request):
     # 값 새로고침마다 업로드
-    #getGainerStock()
+    getGainerStock()
 
     gainerStocks = GainerStock.objects.all()
     gainerStocks = gainerStocks[len(gainerStocks)-5:len(gainerStocks)]
